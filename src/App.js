@@ -13,6 +13,7 @@ const App = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [isDrawModalOpen, setIsDrawModalOpen] = useState(false);
 
+
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
@@ -58,6 +59,13 @@ const App = () => {
       {board[i]}
     </button>
   );
+  const resetGame = () => {
+    setBoard(initialBoard);
+    setIsDrawModalOpen(false);
+    setXIsNext('X');
+  };
+
+
 
   const winner = calculateWinner(board);
   const isDraw = isBoardFull(board) && !winner;
@@ -102,7 +110,7 @@ const App = () => {
               </>
             )}
             {!winner && <p>It's a draw!</p>}
-            <button onClick={() => setIsDrawModalOpen(false)}>Close</button>
+            <button onClick={resetGame}>Play Again</button>
           </div>
         </div>
       )}
